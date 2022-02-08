@@ -8,17 +8,17 @@ class Login extends Component {
     super();
     this.state = {
       nomeUsuario: '',
-      botaoEntrarDesabitado: true, // (2)
-      logado: false, // (3)
-      carregando: false, // (4) (3)
+      botaoEntrarDesabitado: true, // button disabled = true, estado inicial
+      logado: false, // logado true realizará o redirect to search
+      carregando: false, // carregando false renderiza o form
     };
   }
 
   handleInputChange = ({ target }) => {
-    this.setState({ nomeUsuario: target.value }, this.validaBotaoEntrar); // (2)
+    this.setState({ nomeUsuario: target.value }, this.validaBotaoEntrar); // seta no estado o nome do usuario digitado no input enquanto verifica o número de caracteres
   }
 
-  validaBotaoEntrar = () => { // (2)
+  validaBotaoEntrar = () => { // valida o botao apenas se 3 ou mais caracteres
     const caracteresMinimo = 3;
     const { nomeUsuario } = this.state;
     if (nomeUsuario.length >= caracteresMinimo) {
@@ -28,11 +28,11 @@ class Login extends Component {
     }
   };
 
-  botaoEntrarClicado = async () => { // (3)
-    this.setState({ carregando: true });
+  botaoEntrarClicado = async () => { // utiliza createUser para salvar o uruário digitado
+    this.setState({ carregando: true }); // carregando true renderiza o componente Carregando
     const { nomeUsuario } = this.state;
-    await createUser({ name: nomeUsuario });
-    this.setState({ carregando: false, logado: true });
+    await createUser({ name: nomeUsuario }); // emptyUsser.name = nome digitado
+    this.setState({ carregando: false, logado: true }); // carregando = false renderiza o form, logado true redireciona para search
   }
 
   render() {
@@ -40,9 +40,8 @@ class Login extends Component {
     return (
       <div data-testid="page-login">
         <p>componente Login</p>
-        {/* 5 */}
         { logado && <Redirect to="/search" /> }
-        { carregando ? <Carregando /> : ( // (1) (4)
+        { carregando ? <Carregando /> : (
           <form>
             <input
               data-testid="login-name-input"
@@ -52,8 +51,8 @@ class Login extends Component {
             <button
               type="button"
               data-testid="login-submit-button"
-              disabled={ botaoEntrarDesabitado } // (2)
-              onClick={ this.botaoEntrarClicado } // (3)
+              disabled={ botaoEntrarDesabitado }
+              onClick={ this.botaoEntrarClicado }
             >
               Entrar
             </button>
@@ -65,15 +64,3 @@ class Login extends Component {
 }
 
 export default Login;
-
-// (1) crie um formulário para que a pessoa usuária se identifique com um nome.
-
-// (2) O botão para entrar só deve ser habilitado caso o nome digitado tenha 3 ou mais caracteres.
-
-// (3) Ao clicar no botão Entrar, utilize a função createUser da userAPI para salvar o nome digitado.
-//     A função createUser espera receber como argumento um objeto com as informações da pessoa:
-//     createUser({name: "Nome digitado"});
-
-// (4) Enquanto a informação da pessoa usuária é salva, uma mensagem com o texto Carregando... deve aparecer na tela.
-
-// (5) Após a informação ter sido salva, faça um redirect para a rota /search.
