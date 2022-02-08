@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Carregando from './Carregando';
 
@@ -17,6 +18,11 @@ class Header extends Component {
     const { nomeUsuario, carregando } = this.state;
     return (
       <header data-testid="header-component">
+        <section>
+          <NavLink data-testid="link-to-search" to="/search">Pesquisa</NavLink>
+          <NavLink data-testid="link-to-favorites" to="/favorites">Favoritas</NavLink>
+          <NavLink data-testid="link-to-profile" to="/profile">Perfil</NavLink>
+        </section>
         { carregando ? <Carregando />
           : <h2 data-testid="header-user-name">{ nomeUsuario }</h2> }
       </header>
