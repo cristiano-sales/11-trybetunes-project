@@ -5,10 +5,9 @@ class Favorites extends Component {
   render() {
     return (
       <div>
+        <h1>PAGINA FAVORITES</h1>
         <Header />
-        <div data-testid="page-favorites">
-          <p>componente Favorites</p>
-        </div>
+        <div data-testid="page-favorites" />
       </div>
     );
   }

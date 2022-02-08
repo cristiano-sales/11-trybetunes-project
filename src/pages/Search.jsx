@@ -25,7 +25,7 @@ class Search extends Component {
     const { botaoPesquisarDesabilitado } = this.state;
     return (
       <div>
-        <h1>COMPONENTE SEARCH</h1>
+        <h1>PAGINA SEARCH</h1>
         <Header />
         <div data-testid="page-search">
           <form>

@@ -5,10 +5,9 @@ class Album extends Component {
   render() {
     return (
       <div>
+        <h1>PAGINA ALBUM</h1>
         <Header />
-        <div data-testid="page-album">
-          <p>componente Album</p>
-        </div>
+        <div data-testid="page-album" />
       </div>
     );
   }

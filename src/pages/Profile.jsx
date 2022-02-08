@@ -5,10 +5,9 @@ class Profile extends Component {
   render() {
     return (
       <div>
+        <h1>PAGINA PROFILE</h1>
         <Header />
-        <div data-testid="page-profile">
-          <p>componente Profile</p>
-        </div>
+        <div data-testid="page-profile" />
       </div>
     );
   }

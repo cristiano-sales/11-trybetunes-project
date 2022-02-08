@@ -39,7 +39,7 @@ class Login extends Component {
     const { botaoEntrarDesabitado, logado, carregando } = this.state;
     return (
       <div data-testid="page-login">
-        <p>componente Login</p>
+        <h1>PAGINA LOGIN</h1>
         { logado && <Redirect to="/search" /> }
         { carregando ? <Carregando /> : (
           <form>
