@@ -1,3 +1,5 @@
+// Referência: Leonardo Vogel
+
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Carregando from '../components/Carregando';
@@ -64,3 +66,5 @@ class Login extends Component {
 }
 
 export default Login;
+
+// Referência: Leonardo Vogel
