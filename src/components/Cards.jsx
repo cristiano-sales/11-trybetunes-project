@@ -6,14 +6,14 @@ import PropType from 'prop-types';
 
 class Cards extends Component {
   render() {
-    const { collectionId, collectionName } = this.props;
+    const { collectionId, collectionName, artistName } = this.props;
     return (
       <li>
         <Link
           data-testid={ `link-to-album-${collectionId}` }
           to={ `/album/${collectionId}` }
         >
-          { collectionName }
+          { `${artistName}: ${collectionName}` }
         </Link>
         ;
       </li>
@@ -24,6 +24,7 @@ class Cards extends Component {
 Cards.propTypes = {
   collectionId: PropType.number.isRequired,
   collectionName: PropType.string.isRequired,
+  artistName: PropType.string.isRequired,
 };
 
 export default Cards;
