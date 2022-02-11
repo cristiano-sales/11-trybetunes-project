@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
 import Carregando from '../components/Carregando';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   state={
@@ -20,11 +20,13 @@ class Album extends Component {
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
     const faixas = await getMusics(id);
+    const favoritadas = await getFavoriteSongs();
     const { artistName, collectionName } = faixas[0];
     this.setState({
       artista: artistName,
       album: collectionName,
       musicas: faixas.slice(1),
+      arrayFavoritas: favoritadas.map((favoritada) => favoritada.trackId),
     });
   }
 
@@ -32,10 +34,14 @@ class Album extends Component {
     const { arrayFavoritas } = this.state;
     this.setState({ carregando: true });
     await addSong(song);
-    this.setState({
-      carregando: false,
-      arrayFavoritas: [...arrayFavoritas, song.trackId],
-    });
+    if (arrayFavoritas.includes(song.trackId)) {
+      this.setState({ carregando: false });
+    } else {
+      this.setState({
+        carregando: false,
+        arrayFavoritas: [...arrayFavoritas, song.trackId],
+      });
+    }
   }
 
   render() {
