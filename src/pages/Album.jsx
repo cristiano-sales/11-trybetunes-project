@@ -71,8 +71,8 @@ class Album extends Component {
 }
 
 Album.propTypes = {
-  match: PropTypes.string.isRequired,
-};
+  match: PropTypes.object,
+}.isRequired;
 
 export default Album;
 
