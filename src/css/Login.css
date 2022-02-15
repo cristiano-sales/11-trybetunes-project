@@ -1,0 +1,17 @@
+.parentDiv{
+  margin-left: 20px;
+}
+.firstDiv {
+  height: 50px;
+  background-color: green;
+  text-align: center;
+}
+.button {
+  height: 50px;
+  width: 100px;
+}
+.input {
+  height: 50px;
+  width: 33%;
+  font-size: 20px;
+}
