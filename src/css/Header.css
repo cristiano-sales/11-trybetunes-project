@@ -1,0 +1,40 @@
+.a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  background-color: red;
+  font-size: larger;
+}
+.b {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  background-color: orange;
+  font-size: larger;
+}
+.c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  background-color: yellow;
+  font-size: larger;
+}
+.d {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  background-color: green;
+  font-size: larger;
+}
+.e {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  background-color: purple;
+  font-size: larger;
+}
